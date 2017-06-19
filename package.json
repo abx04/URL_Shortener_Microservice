@@ -1,0 +1,9 @@
+{
+  "name": "URL Shortener Microservice",
+  "version": "0.0.1",
+  "author": "Abhinav",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.10.7"
+  }
+}
