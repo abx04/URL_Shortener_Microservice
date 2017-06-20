@@ -4,6 +4,7 @@
   "author": "Abhinav",
   "dependencies": {
     "express": "^4.15.3",
+    "fs": "0.0.1-security",
     "mongoose": "^4.10.7"
   }
 }
