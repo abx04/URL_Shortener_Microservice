@@ -6,9 +6,18 @@ const UrlModel=require('../models/url');
 
 let count=11000;
 
-router.get('/:url',function (req,res) {
+router.get('/:url',function (req,res,next) {
     let url=req.params.url;
     count++;
+    UrlModel.findOne({original_url:url},function (err,result) {
+       if (err)res.send(err);
+       else if(res===null)next();
+       else res.send(result);
+    });
+});
+
+router.get('/:url',function(req,res){
+    let url=req.param.url;
     let urlModel=new UrlModel({
             original_url:url,
             shortened_url:count
@@ -19,7 +28,6 @@ router.get('/:url',function (req,res) {
 
     });
 
-    //res.send(urlModel.toString());
 });
 
 module.exports=router;

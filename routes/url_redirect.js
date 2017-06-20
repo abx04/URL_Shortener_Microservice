@@ -7,9 +7,12 @@ const UrlModel=require('../models/url');
 router.get('/:url',function (req,res) {
     let url=req.params.url;
     UrlModel.findOne({shortened_url:url},function (err,result) {
-        console.log(result);
-        if(err)res.send('Url mismatch');
+        if(err)res.send(err);
+
         else{
+            if(result===null)
+                res.send('url mismatch');
+            else
             res.redirect(result.original_url);
         }
     })
